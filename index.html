@@ -1,132 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SmartEarn | Digital Marketing & Online Income</title>
-  <meta name="description" content="SmartEarn helps you learn digital marketing, affiliate marketing, and online income strategies." />
-  <style>
-    body{
-      margin:0;
-      font-family:Arial, Helvetica, sans-serif;
-      background:#f5f7fb;
-      color:#1f2937;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MakeXA - Smart Everyday Product</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin:0;
+        padding:0;
+        line-height:1.6;
+        background-color:#f9f9f9;
+        color:#333;
+        scroll-behavior: smooth;
     }
-    header{
-      background:linear-gradient(135deg,#0f172a,#1e3a8a);
-      color:#fff;
-      padding:60px 20px;
-      text-align:center;
+    a { text-decoration:none; color:#0077cc; }
+    a:hover { text-decoration:underline; }
+    .container { max-width:1000px; margin:auto; padding:20px; }
+    h1,h2,h3 { color:#0077cc; }
+    h1 { text-align:center; margin-top:20px; }
+    p,li { margin-bottom:10px; }
+    ul, ol { margin-left:20px; margin-bottom:15px; }
+
+    .btn {
+        display:inline-block;
+        background-color:#0077cc;
+        color:#fff;
+        padding:12px 25px;
+        border-radius:5px;
+        margin:10px 0;
+        font-size:16px;
+        cursor:pointer;
     }
-    header h1{font-size:36px;margin-bottom:10px;}
-    header p{font-size:18px;max-width:700px;margin:auto;}
-    .btn{
-      display:inline-block;
-      margin-top:25px;
-      padding:14px 30px;
-      background:#22c55e;
-      color:#fff;
-      border-radius:30px;
-      text-decoration:none;
-      font-weight:bold;
-    }
-    section{
-      max-width:1100px;
-      margin:auto;
-      padding:60px 20px;
-    }
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:25px;
-    }
-    .card{
-      background:#fff;
-      padding:25px;
-      border-radius:15px;
-      box-shadow:0 10px 25px rgba(0,0,0,0.08);
-    }
-    .card h3{margin-top:0;}
-    .highlight{
-      background:#e0f2fe;
-      border-left:6px solid #0284c7;
-      padding:20px;
-      border-radius:10px;
-    }
-    footer{
-      background:#0f172a;
-      color:#e5e7eb;
-      text-align:center;
-      padding:30px 20px;
-      font-size:14px;
-    }
-  </style>
+    .btn:hover { background-color:#005fa3; }
+    section { padding:40px 0; border-bottom:1px solid #ddd; }
+    .review { background-color:#e6f0ff; padding:15px; border-radius:8px; margin-bottom:15px; }
+    footer { text-align:center; padding:20px; background-color:#0077cc; color:#fff; }
+    footer a { color:#fff; margin:0 10px; }
+
+    /* Modal for Terms, Privacy, Login, Signup */
+    .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.6); z-index:1000; overflow:auto; }
+    .modal-content { background:#fff; margin:50px auto; padding:30px; border-radius:10px; max-width:500px; }
+    .close-btn { float:right; font-size:20px; cursor:pointer; color:#0077cc; }
+    input[type="text"], input[type="email"], input[type="password"] { width:100%; padding:10px; margin:5px 0 15px 0; border:1px solid #ccc; border-radius:5px; }
+
+    @media(max-width:768px) { .container { padding:10px; } .modal-content { margin:20px; padding:20px; } }
+
+    header { background:#0077cc; padding:10px; text-align:right; }
+    header .btn { margin-left:10px; }
+</style>
 </head>
 <body>
 
-<header>
-  <h1>SmartEarn</h1>
-  <p>Learn Digital Marketing, Affiliate Marketing, and Smart Online Income Methods</p>
-  <a href="#start" class="btn">Start Learning</a>
+<!-- HEADER -->
+<header id="header">
+    <a href="#" class="btn" id="loginBtn" onclick="openModal('loginModal')">Login</a>
+    <a href="#" class="btn" id="signupBtn" onclick="openModal('signupModal')">Sign Up</a>
+    <a href="#" class="btn" id="logoutBtn" style="display:none;" onclick="logout()">Logout</a>
 </header>
 
+<!-- HOME PAGE -->
 <section>
-  <h2>What We Do</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Affiliate Marketing</h3>
-      <p>Learn how to earn commissions by promoting trusted products and services online.</p>
+    <div class="container">
+        <h1>Smart Everyday Product</h1>
+        <p style="text-align:center; font-size:18px; margin-bottom:20px;">Make your daily life easier, faster, and better</p>
+        <p style="text-align:center; margin-bottom:20px;">This product is designed to solve your daily problem in a simple way. Easy to use, durable, and affordable for everyone.</p>
+        <div style="text-align:center;">
+            <a href="#price" class="btn">Order Now</a>
+        </div>
     </div>
-    <div class="card">
-      <h3>Ad Monetization</h3>
-      <p>Use platforms like Monetag to earn money from website traffic smartly.</p>
-    </div>
-    <div class="card">
-      <h3>Digital Skills</h3>
-      <p>SEO basics, content writing, traffic growth, and conversion strategies.</p>
-    </div>
-  </div>
 </section>
 
-<section class="highlight" id="start">
-  <h2>Why Choose SmartEarn?</h2>
-  <ul>
-    <li>Beginner‑friendly learning</li>
-    <li>Works worldwide, including Bangladesh</li>
-    <li>No fake promises, only real methods</li>
-    <li>Mobile & PC friendly</li>
-  </ul>
-</section>
-
+<!-- PRODUCT DESCRIPTION -->
 <section>
-  <h2>How You Can Earn</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Step 1</h3>
-      <p>Create simple content (blogs, links, pages).</p>
+    <div class="container">
+        <h2>What is this product?</h2>
+        <p>This is a high-quality product made for daily use. It saves time, reduces effort, and gives you comfort in everyday tasks.</p>
+        <h2>Why you need it</h2>
+        <ul>
+            <li>Easy to use</li>
+            <li>Saves time</li>
+            <li>Strong and long-lasting</li>
+            <li>Suitable for all ages</li>
+            <li>Affordable price</li>
+        </ul>
     </div>
-    <div class="card">
-      <h3>Step 2</h3>
-      <p>Add ads or affiliate links (Monetag, others).</p>
-    </div>
-    <div class="card">
-      <h3>Step 3</h3>
-      <p>Share & grow traffic using social platforms.</p>
-    </div>
-  </div>
 </section>
 
+<!-- HOW TO USE -->
 <section>
-  <h2>Contact</h2>
-  <p>Email: forrukhahmed253@gmail.com</p>
+    <div class="container">
+        <h2>How to Use</h2>
+        <ol>
+            <li>Unbox the product</li>
+            <li>Use it as instructed (very simple)</li>
+            <li>Enjoy the result instantly</li>
+        </ol>
+    </div>
 </section>
 
-<!-- Monetag Ad Code -->
-<!-- Paste Monetag script here -->
+<!-- PRODUCT FEATURES -->
+<section>
+    <div class="container">
+        <h2>Product Features</h2>
+        <ul>
+            <li>Premium quality material</li>
+            <li>Lightweight and portable</li>
+            <li>Modern design</li>
+            <li>Safe and reliable</li>
+            <li>Long-lasting performance</li>
+        </ul>
+    </div>
+</section>
 
+<!-- PRICE SECTION -->
+<section id="price">
+    <div class="container">
+        <h2>Price</h2>
+        <p>Regular price: ৳1999</p>
+        <p>Today’s offer: ৳1499</p>
+        <p>Free delivery available | Cash on Delivery available</p>
+        <a href="#" class="btn" id="buyBtn">Buy Now</a>
+    </div>
+</section>
+
+<!-- CUSTOMER REVIEWS -->
+<section>
+    <div class="container">
+        <h2>Customer Reviews</h2>
+        <div class="review">
+            <p>“This product really helped me. Very easy to use.”</p>
+            <p><strong>– Rahim, Dhaka</strong></p>
+        </div>
+        <div class="review">
+            <p>“Good quality and fast delivery.”</p>
+            <p><strong>– Ayesha, Delhi</strong></p>
+        </div>
+    </div>
+</section>
+
+<!-- WHY TRUST US -->
+<section>
+    <div class="container">
+        <h2>Why Trust Us</h2>
+        <ul>
+            <li>100% original product</li>
+            <li>Secure payment</li>
+            <li>Cash on delivery</li>
+            <li>Easy return policy</li>
+            <li>Customer support available</li>
+        </ul>
+    </div>
+</section>
+
+<!-- DELIVERY & RETURN -->
+<section>
+    <div class="container">
+        <h2>Delivery & Return</h2>
+        <p><strong>Delivery time:</strong></p>
+        <ul>
+            <li>Inside Dhaka: 1–3 days</li>
+            <li>Outside Dhaka: 2–7 days</li>
+            <li>Outside Bangladesh: 7–15 days</li>
+        </ul>
+        <p><strong>Return policy:</strong> 7 days easy return if product is damaged</p>
+    </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact">
+    <div class="container">
+        <h2>Contact Us</h2>
+        <p>Need help?</p>
+        <p>Call / WhatsApp: 01408192518</p>
+        <p>Email: <a href="mailto:forrukhahmed253@gmail.com">forrukhahmed253@gmail.com</a></p>
+    </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  <p>© 2026 SmartEarn. All rights reserved.</p>
+    <p>
+        About us | <a href="#contact">Contact</a> | 
+        <a href="#" onclick="openModal('terms')">Terms & Conditions</a> | 
+        <a href="#" onclick="openModal('privacy')">Privacy Policy</a>
+    </p>
+    <p>&copy; 2026 MakeXA. All rights reserved.</p>
 </footer>
 
+<!-- TERMS MODAL -->
+<div id="terms" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('terms')">&times;</span>
+        <h2>Terms & Conditions</h2>
+        <p>All the terms from before… (copy full content here)</p>
+    </div>
+</div>
+
+<!-- PRIVACY MODAL -->
+<div id="privacy" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('privacy')">&times;</span>
+        <h2>Privacy Policy</h2>
+        <p>All the privacy content here…</p>
+    </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('loginModal')">&times;</span>
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="email" id="loginEmail" placeholder="Email" required>
+            <input type="password" id="loginPassword" placeholder="Password" required>
+            <button type="submit" class="btn">Login</button>
+        </form>
+    </div>
+</div>
+
+<!-- SIGNUP MODAL -->
+<div id="signupModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('signupModal')">&times;</span>
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+            <input type="text" id="signupName" placeholder="Full Name" required>
+            <input type="email" id="signupEmail" placeholder="Email" required>
+            <input type="text" id="signupPhone" placeholder="Phone" required>
+            <input type="password" id="signupPassword" placeholder="Password" required>
+            <input type="password" id="signupConfirm" placeholder="Confirm Password" required>
+            <button type="submit" class="btn">Sign Up</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function openModal(id){ document.getElementById(id).style.display='block'; }
+    function closeModal(id){ document.getElementById(id).style.display='none'; }
+    window.onclick = function(event){ if(event.target.className==='modal'){ event.target.style.display='none'; } }
+
+    // Simple session simulation
+    let currentUser = null;
+
+    function updateUI(){
+        if(currentUser){
+            document.getElementById('loginBtn').style.display='none';
+            document.getElementById('signupBtn').style.display='none';
+            document.getElementById('logoutBtn').style.display='inline-block';
+        } else {
+            document.getElementById('loginBtn').style.display='inline-block';
+            document.getElementById('signupBtn').style.display='inline-block';
+            document.getElementById('logoutBtn').style.display='none';
+        }
+    }
+
+    function logout(){
+        currentUser = null;
+        updateUI();
+        alert("Logged out successfully!");
+    }
+
+    document.getElementById('signupForm').addEventListener('submit', function(e){
+        e.preventDefault();
+        const name = document.getElementById('signupName').value;
+        const email = document.getElementById('signupEmail').value;
+        const phone = document.getElementById('signupPhone').value;
+        const password = document.getElementById('signupPassword').value;
+        const confirm = document.getElementById('signupConfirm').value;
+        if(password !== confirm){ alert("Passwords do not match!"); return; }
+        currentUser = {name,email,phone};
+        closeModal('signupModal');
+        updateUI();
+        alert("Sign Up successful! Welcome " + name);
+    });
+
+    document.getElementById('loginForm').addEventListener('submit', function(e){
+        e.preventDefault();
+        const email = document.getElementById('loginEmail').value;
+        const password = document.getElementById('loginPassword').value;
+        if(!email || !password){ alert("Enter credentials!"); return; }
+        currentUser = {email};
+        closeModal('loginModal');
+        updateUI();
+        alert("Logged in successfully!");
+    });
+
+    document.getElementById('buyBtn').addEventListener('click', function(e){
+        e.preventDefault();
+        if(!currentUser){ alert("Please login to buy this product."); }
+        else { alert("Order placed successfully! Thank you, " + (currentUser.name || "")); }
+    });
+
+    updateUI();
+</script>
+
 </body>
-</html>
+  </html>
