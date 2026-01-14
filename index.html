@@ -3,296 +3,246 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MakeXA - Smart Everyday Product</title>
+<title>MakeXA | Kiss Beauty Aloe Vera Clean Soap</title>
+
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin:0;
-        padding:0;
-        line-height:1.6;
-        background-color:#f9f9f9;
-        color:#333;
-        scroll-behavior: smooth;
-    }
-    a { text-decoration:none; color:#0077cc; }
-    a:hover { text-decoration:underline; }
-    .container { max-width:1000px; margin:auto; padding:20px; }
-    h1,h2,h3 { color:#0077cc; }
-    h1 { text-align:center; margin-top:20px; }
-    p,li { margin-bottom:10px; }
-    ul, ol { margin-left:20px; margin-bottom:15px; }
+body{
+    font-family:Arial,sans-serif;
+    margin:0;
+    background:#f9f9f9;
+    color:#333;
+    scroll-behavior:smooth;
+}
+a{text-decoration:none;color:#0077cc}
+.container{max-width:1000px;margin:auto;padding:20px}
+h1,h2,h3{color:#0077cc}
+.btn{
+    background:#0077cc;
+    color:#fff;
+    padding:12px 25px;
+    border-radius:5px;
+    display:inline-block;
+    cursor:pointer;
+}
+.btn:hover{background:#005fa3}
+section{padding:40px 0;border-bottom:1px solid #ddd}
+.review{background:#e6f0ff;padding:15px;border-radius:8px;margin-bottom:15px}
 
-    .btn {
-        display:inline-block;
-        background-color:#0077cc;
-        color:#fff;
-        padding:12px 25px;
-        border-radius:5px;
-        margin:10px 0;
-        font-size:16px;
-        cursor:pointer;
-    }
-    .btn:hover { background-color:#005fa3; }
-    section { padding:40px 0; border-bottom:1px solid #ddd; }
-    .review { background-color:#e6f0ff; padding:15px; border-radius:8px; margin-bottom:15px; }
-    footer { text-align:center; padding:20px; background-color:#0077cc; color:#fff; }
-    footer a { color:#fff; margin:0 10px; }
+header{
+    background:#0077cc;
+    padding:10px;
+    text-align:right;
+}
+header .btn{margin-left:10px}
 
-    /* Modal for Terms, Privacy, Login, Signup */
-    .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.6); z-index:1000; overflow:auto; }
-    .modal-content { background:#fff; margin:50px auto; padding:30px; border-radius:10px; max-width:500px; }
-    .close-btn { float:right; font-size:20px; cursor:pointer; color:#0077cc; }
-    input[type="text"], input[type="email"], input[type="password"] { width:100%; padding:10px; margin:5px 0 15px 0; border:1px solid #ccc; border-radius:5px; }
+footer{
+    background:#0077cc;
+    color:#fff;
+    text-align:center;
+    padding:20px;
+}
 
-    @media(max-width:768px) { .container { padding:10px; } .modal-content { margin:20px; padding:20px; } }
+.modal{
+    display:none;
+    position:fixed;
+    top:0;left:0;
+    width:100%;height:100%;
+    background:rgba(0,0,0,.6);
+    z-index:1000;
+}
+.modal-content{
+    background:#fff;
+    margin:50px auto;
+    padding:30px;
+    border-radius:10px;
+    max-width:500px;
+}
+.close-btn{float:right;font-size:20px;cursor:pointer;color:#0077cc}
+input{
+    width:100%;
+    padding:10px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
 
-    header { background:#0077cc; padding:10px; text-align:right; }
-    header .btn { margin-left:10px; }
+@media(max-width:768px){
+    .container{padding:10px}
+}
 </style>
 </head>
+
 <body>
 
 <!-- HEADER -->
-<header id="header">
-    <a href="#" class="btn" id="loginBtn" onclick="openModal('loginModal')">Login</a>
-    <a href="#" class="btn" id="signupBtn" onclick="openModal('signupModal')">Sign Up</a>
-    <a href="#" class="btn" id="logoutBtn" style="display:none;" onclick="logout()">Logout</a>
+<header>
+    <a class="btn" id="loginBtn" onclick="openModal('loginModal')">Login</a>
+    <a class="btn" id="signupBtn" onclick="openModal('signupModal')">Sign Up</a>
+    <a class="btn" id="logoutBtn" style="display:none" onclick="logout()">Logout</a>
 </header>
 
-<!-- HOME PAGE -->
+<!-- HERO -->
 <section>
-    <div class="container">
-        <h1>Smart Everyday Product</h1>
-        <p style="text-align:center; font-size:18px; margin-bottom:20px;">Make your daily life easier, faster, and better</p>
-        <p style="text-align:center; margin-bottom:20px;">This product is designed to solve your daily problem in a simple way. Easy to use, durable, and affordable for everyone.</p>
-        <div style="text-align:center;">
-            <a href="#price" class="btn">Order Now</a>
-        </div>
+<div class="container">
+    <h1>Kiss Beauty Aloe Vera Clean Soap</h1>
+    <p style="text-align:center;font-size:18px">
+        Deep Pore Cleansing • Face & Body • 100g
+    </p>
+    <p style="text-align:center">
+        Enriched with Aloe Vera & Natural Oil for healthy, fresh skin.
+    </p>
+    <div style="text-align:center">
+        <a href="#price" class="btn">Buy Now</a>
     </div>
+</div>
 </section>
 
-<!-- PRODUCT DESCRIPTION -->
+<!-- PRODUCT INFO -->
 <section>
-    <div class="container">
-        <h2>What is this product?</h2>
-        <p>This is a high-quality product made for daily use. It saves time, reduces effort, and gives you comfort in everyday tasks.</p>
-        <h2>Why you need it</h2>
-        <ul>
-            <li>Easy to use</li>
-            <li>Saves time</li>
-            <li>Strong and long-lasting</li>
-            <li>Suitable for all ages</li>
-            <li>Affordable price</li>
-        </ul>
-    </div>
+<div class="container">
+    <h2>Product Description</h2>
+    <p>
+        Kiss Beauty Aloe Vera Clean Soap is designed for daily face and body use.
+        It deeply cleans pores, removes makeup, excess oil, and helps reduce blackheads.
+    </p>
+
+    <h3>Key Benefits</h3>
+    <ul>
+        <li>Deep pore cleansing</li>
+        <li>Removes makeup & dirt</li>
+        <li>Controls excess oil</li>
+        <li>With natural oil & aloe vera</li>
+        <li>Suitable for all skin types</li>
+    </ul>
+</div>
 </section>
 
 <!-- HOW TO USE -->
 <section>
-    <div class="container">
-        <h2>How to Use</h2>
-        <ol>
-            <li>Unbox the product</li>
-            <li>Use it as instructed (very simple)</li>
-            <li>Enjoy the result instantly</li>
-        </ol>
-    </div>
+<div class="container">
+    <h2>How to Use</h2>
+    <ol>
+        <li>Wet your face or body</li>
+        <li>Apply soap and massage gently</li>
+        <li>Rinse with clean water</li>
+    </ol>
+</div>
 </section>
 
-<!-- PRODUCT FEATURES -->
-<section>
-    <div class="container">
-        <h2>Product Features</h2>
-        <ul>
-            <li>Premium quality material</li>
-            <li>Lightweight and portable</li>
-            <li>Modern design</li>
-            <li>Safe and reliable</li>
-            <li>Long-lasting performance</li>
-        </ul>
-    </div>
-</section>
-
-<!-- PRICE SECTION -->
+<!-- PRICE -->
 <section id="price">
-    <div class="container">
-        <h2>Price</h2>
-        <p>Regular price: ৳1999</p>
-        <p>Today’s offer: ৳1499</p>
-        <p>Free delivery available | Cash on Delivery available</p>
-        <a href="#" class="btn" id="buyBtn">Buy Now</a>
-    </div>
+<div class="container">
+    <h2>Pricing</h2>
+    <p><strong>Retail Price:</strong> ৳47.65 / piece</p>
+    <p><strong>Wholesale:</strong> 288 pieces per carton</p>
+    <p>Cash on Delivery available (Bangladesh)</p>
+    <a class="btn" id="buyBtn">Place Order</a>
+</div>
 </section>
 
-<!-- CUSTOMER REVIEWS -->
+<!-- SPECIFICATIONS -->
 <section>
-    <div class="container">
-        <h2>Customer Reviews</h2>
-        <div class="review">
-            <p>“This product really helped me. Very easy to use.”</p>
-            <p><strong>– Rahim, Dhaka</strong></p>
-        </div>
-        <div class="review">
-            <p>“Good quality and fast delivery.”</p>
-            <p><strong>– Ayesha, Delhi</strong></p>
-        </div>
-    </div>
+<div class="container">
+    <h2>Product Specifications</h2>
+    <ul>
+        <li><strong>Brand:</strong> Kiss Beauty® Skin Clinic</li>
+        <li><strong>Item No:</strong> 1275-07F</li>
+        <li><strong>Net Weight:</strong> 100g</li>
+        <li><strong>Soap Size:</strong> H 87mm × W 55mm</li>
+        <li><strong>Barcode:</strong> 6903072448203</li>
+        <li><strong>Packing:</strong> 24 Dozen × 12 pcs = 288 pcs</li>
+    </ul>
+</div>
 </section>
 
-<!-- WHY TRUST US -->
+<!-- REVIEWS -->
 <section>
-    <div class="container">
-        <h2>Why Trust Us</h2>
-        <ul>
-            <li>100% original product</li>
-            <li>Secure payment</li>
-            <li>Cash on delivery</li>
-            <li>Easy return policy</li>
-            <li>Customer support available</li>
-        </ul>
+<div class="container">
+    <h2>Customer Reviews</h2>
+    <div class="review">
+        “Very good soap, fresh feeling after wash.”  
+        <strong>– Rahim, Dhaka</strong>
     </div>
+    <div class="review">
+        “Original product, fast delivery.”  
+        <strong>– Ayesha, Delhi</strong>
+    </div>
+</div>
 </section>
 
-<!-- DELIVERY & RETURN -->
+<!-- CONTACT -->
 <section>
-    <div class="container">
-        <h2>Delivery & Return</h2>
-        <p><strong>Delivery time:</strong></p>
-        <ul>
-            <li>Inside Dhaka: 1–3 days</li>
-            <li>Outside Dhaka: 2–7 days</li>
-            <li>Outside Bangladesh: 7–15 days</li>
-        </ul>
-        <p><strong>Return policy:</strong> 7 days easy return if product is damaged</p>
-    </div>
+<div class="container">
+    <h2>Contact</h2>
+    <p>📞 WhatsApp: 01408192518</p>
+    <p>📧 Email: forrukhahmed253@gmail.com</p>
+</div>
 </section>
 
-<!-- CONTACT SECTION -->
-<section id="contact">
-    <div class="container">
-        <h2>Contact Us</h2>
-        <p>Need help?</p>
-        <p>Call / WhatsApp: 01408192518</p>
-        <p>Email: <a href="mailto:forrukhahmed253@gmail.com">forrukhahmed253@gmail.com</a></p>
-    </div>
-</section>
-
-<!-- FOOTER -->
 <footer>
-    <p>
-        About us | <a href="#contact">Contact</a> | 
-        <a href="#" onclick="openModal('terms')">Terms & Conditions</a> | 
-        <a href="#" onclick="openModal('privacy')">Privacy Policy</a>
-    </p>
-    <p>&copy; 2026 MakeXA. All rights reserved.</p>
+    © 2026 MakeXA. All rights reserved.
 </footer>
 
-<!-- TERMS MODAL -->
-<div id="terms" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal('terms')">&times;</span>
-        <h2>Terms & Conditions</h2>
-        <p>All the terms from before… (copy full content here)</p>
-    </div>
-</div>
-
-<!-- PRIVACY MODAL -->
-<div id="privacy" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal('privacy')">&times;</span>
-        <h2>Privacy Policy</h2>
-        <p>All the privacy content here…</p>
-    </div>
-</div>
-
-<!-- LOGIN MODAL -->
+<!-- LOGIN -->
 <div id="loginModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal('loginModal')">&times;</span>
-        <h2>Login</h2>
-        <form id="loginForm">
-            <input type="email" id="loginEmail" placeholder="Email" required>
-            <input type="password" id="loginPassword" placeholder="Password" required>
-            <button type="submit" class="btn">Login</button>
-        </form>
-    </div>
+<div class="modal-content">
+<span class="close-btn" onclick="closeModal('loginModal')">&times;</span>
+<h2>Login</h2>
+<input type="email" id="loginEmail" placeholder="Email">
+<input type="password" id="loginPassword" placeholder="Password">
+<button class="btn" onclick="login()">Login</button>
+</div>
 </div>
 
-<!-- SIGNUP MODAL -->
+<!-- SIGNUP -->
 <div id="signupModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal('signupModal')">&times;</span>
-        <h2>Sign Up</h2>
-        <form id="signupForm">
-            <input type="text" id="signupName" placeholder="Full Name" required>
-            <input type="email" id="signupEmail" placeholder="Email" required>
-            <input type="text" id="signupPhone" placeholder="Phone" required>
-            <input type="password" id="signupPassword" placeholder="Password" required>
-            <input type="password" id="signupConfirm" placeholder="Confirm Password" required>
-            <button type="submit" class="btn">Sign Up</button>
-        </form>
-    </div>
+<div class="modal-content">
+<span class="close-btn" onclick="closeModal('signupModal')">&times;</span>
+<h2>Sign Up</h2>
+<input type="text" id="name" placeholder="Name">
+<input type="email" id="email" placeholder="Email">
+<input type="text" id="phone" placeholder="Phone">
+<input type="password" id="pass" placeholder="Password">
+<button class="btn" onclick="signup()">Create Account</button>
+</div>
 </div>
 
 <script>
-    function openModal(id){ document.getElementById(id).style.display='block'; }
-    function closeModal(id){ document.getElementById(id).style.display='none'; }
-    window.onclick = function(event){ if(event.target.className==='modal'){ event.target.style.display='none'; } }
+let user=null;
 
-    // Simple session simulation
-    let currentUser = null;
+function openModal(id){document.getElementById(id).style.display="block"}
+function closeModal(id){document.getElementById(id).style.display="none"}
 
-    function updateUI(){
-        if(currentUser){
-            document.getElementById('loginBtn').style.display='none';
-            document.getElementById('signupBtn').style.display='none';
-            document.getElementById('logoutBtn').style.display='inline-block';
-        } else {
-            document.getElementById('loginBtn').style.display='inline-block';
-            document.getElementById('signupBtn').style.display='inline-block';
-            document.getElementById('logoutBtn').style.display='none';
-        }
-    }
-
-    function logout(){
-        currentUser = null;
-        updateUI();
-        alert("Logged out successfully!");
-    }
-
-    document.getElementById('signupForm').addEventListener('submit', function(e){
-        e.preventDefault();
-        const name = document.getElementById('signupName').value;
-        const email = document.getElementById('signupEmail').value;
-        const phone = document.getElementById('signupPhone').value;
-        const password = document.getElementById('signupPassword').value;
-        const confirm = document.getElementById('signupConfirm').value;
-        if(password !== confirm){ alert("Passwords do not match!"); return; }
-        currentUser = {name,email,phone};
-        closeModal('signupModal');
-        updateUI();
-        alert("Sign Up successful! Welcome " + name);
-    });
-
-    document.getElementById('loginForm').addEventListener('submit', function(e){
-        e.preventDefault();
-        const email = document.getElementById('loginEmail').value;
-        const password = document.getElementById('loginPassword').value;
-        if(!email || !password){ alert("Enter credentials!"); return; }
-        currentUser = {email};
-        closeModal('loginModal');
-        updateUI();
-        alert("Logged in successfully!");
-    });
-
-    document.getElementById('buyBtn').addEventListener('click', function(e){
-        e.preventDefault();
-        if(!currentUser){ alert("Please login to buy this product."); }
-        else { alert("Order placed successfully! Thank you, " + (currentUser.name || "")); }
-    });
-
+function signup(){
+    user={name:document.getElementById("name").value};
+    closeModal("signupModal");
     updateUI();
+    alert("Account created successfully!");
+}
+
+function login(){
+    user={email:document.getElementById("loginEmail").value};
+    closeModal("loginModal");
+    updateUI();
+    alert("Login successful!");
+}
+
+function logout(){
+    user=null;
+    updateUI();
+}
+
+function updateUI(){
+    loginBtn.style.display=user?"none":"inline-block";
+    signupBtn.style.display=user?"none":"inline-block";
+    logoutBtn.style.display=user?"inline-block":"none";
+}
+
+buyBtn.onclick=function(){
+    if(!user) alert("Please login to place order");
+    else alert("Order placed successfully!");
+}
 </script>
 
 </body>
-  </html>
+</html>
