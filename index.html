@@ -3,26 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>MakeXA - Smart Products & Reselling Platform</title>
 
 <meta name="description" content="MakeXA is a smart everyday product and reselling platform offering quality products, secure login, and trusted service.">
 
+<link rel="icon" type="image/png" href="logo.png">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 <style>
 body{
     font-family: Arial, sans-serif;
-    margin:0;
     background:#f8f9fa;
-    line-height:1.6;
     color:#333;
+    margin:0;
 }
-a{text-decoration:none}
+
 header{
     background:#0077cc;
-    padding:10px;
-    text-align:right;
+    padding:10px 15px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
+
+header img{
+    height:40px;
+}
+
 header .btn{margin-left:5px}
 
 nav{
@@ -32,18 +40,19 @@ nav{
 }
 
 nav a{
-    margin:0 5px;
+    margin:0 8px;
+    font-weight:bold;
 }
 
 .hero{
     background:linear-gradient(to right,#0077cc,#28a745);
     color:white;
-    padding:90px 15px;
     text-align:center;
+    padding:80px 15px;
 }
 
 section{
-    padding:60px 0;
+    padding:60px 15px;
     border-bottom:1px solid #ddd;
 }
 
@@ -51,7 +60,7 @@ section{
     background:#e6f0ff;
     padding:15px;
     border-radius:8px;
-    margin-bottom:15px;
+    margin-bottom:10px;
 }
 
 footer{
@@ -61,10 +70,7 @@ footer{
     text-align:center;
 }
 
-footer a{
-    color:white;
-    margin:0 10px;
-}
+footer a{color:white;margin:0 10px}
 
 .modal{
     display:none;
@@ -75,7 +81,6 @@ footer a{
     height:100%;
     background:rgba(0,0,0,0.6);
     z-index:9999;
-    overflow:auto;
 }
 
 .modal-content{
@@ -90,13 +95,12 @@ footer a{
     float:right;
     font-size:22px;
     cursor:pointer;
-    color:#0077cc;
 }
 
-input,select{
+input,select,textarea{
     width:100%;
     padding:10px;
-    margin-bottom:15px;
+    margin-bottom:12px;
     border:1px solid #ccc;
     border-radius:5px;
 }
@@ -105,50 +109,63 @@ input,select{
 
 <body>
 
+<!-- HEADER -->
 <header>
-    <a class="btn btn-light" id="loginBtn" onclick="openModal('loginModal')">Login</a>
-    <a class="btn btn-light" id="signupBtn" onclick="openModal('signupModal')">Sign Up</a>
-    <a class="btn btn-warning" id="logoutBtn" onclick="logout()" style="display:none">Logout</a>
+<div>
+<img src="logo.png">
+<span style="color:white;font-size:22px;font-weight:bold;margin-left:10px">MakeXA</span>
+</div>
+
+<div>
+<button class="btn btn-light" id="loginBtn" onclick="openModal('loginModal')">Login</button>
+<button class="btn btn-light" id="signupBtn" onclick="openModal('signupModal')">Sign Up</button>
+<button class="btn btn-warning" id="logoutBtn" onclick="logout()" style="display:none">Logout</button>
+</div>
 </header>
 
+<!-- NAV -->
 <nav>
-    <a href="#" onclick="filterCategory('all')">All</a> |
-    <a href="#" onclick="filterCategory('daily')">Daily Use</a> |
-    <a href="#" onclick="filterCategory('electronics')">Electronics</a> |
-    <a href="#" onclick="filterCategory('accessories')">Accessories</a>
-    <input type="text" id="searchBox" placeholder="Search products" onkeyup="searchProduct()" style="margin-left:10px">
+<a href="#" onclick="filterCategory('all')">All</a> |
+<a href="#" onclick="filterCategory('daily')">Daily</a> |
+<a href="#" onclick="filterCategory('electronics')">Electronics</a> |
+<a href="#" onclick="filterCategory('accessories')">Accessories</a>
+
+<input type="text" id="searchBox" placeholder="Search products" onkeyup="searchProduct()" style="margin-left:15px">
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-    <h1>MakeXA</h1>
-    <p>Make your daily life easier, faster, and better</p>
-    <p>Smart everyday products and trusted reselling platform</p>
+<img src="logo.png" style="height:80px"><br><br>
+<h1>MakeXA</h1>
+<p>Make your daily life easier, faster, and better</p>
+<p>Smart everyday products and trusted reselling platform</p>
 </section>
 
-<section class="container" id="products">
+<!-- PRODUCTS -->
+<section class="container">
 <h2 class="text-center mb-4">Products</h2>
 <div class="row">
 
 <div class="col-md-4 product" data-name="Smart Product" data-category="daily">
-<div class="card mb-4">
+<div class="card">
 <img src="https://via.placeholder.com/300" class="card-img-top">
 <div class="card-body text-center">
 <h5>Smart Everyday Product</h5>
 <p>৳1499</p>
-<button class="btn btn-primary" onclick="buyNow(1499)">Buy Now</button>
-<button class="btn btn-outline-danger btn-sm" onclick="addFav()">❤</button>
+<button class="btn btn-primary" onclick="addToCart(1499)">Buy Now</button>
+<button class="btn btn-outline-danger" onclick="addFav()">❤ Favourite</button>
 </div>
 </div>
 </div>
 
 <div class="col-md-4 product" data-name="Wireless Headphones" data-category="electronics">
-<div class="card mb-4">
+<div class="card">
 <img src="https://via.placeholder.com/300" class="card-img-top">
 <div class="card-body text-center">
 <h5>Wireless Headphones</h5>
 <p>৳4999</p>
-<button class="btn btn-primary" onclick="buyNow(4999)">Buy Now</button>
-<button class="btn btn-outline-danger btn-sm" onclick="addFav()">❤</button>
+<button class="btn btn-primary" onclick="addToCart(4999)">Buy Now</button>
+<button class="btn btn-outline-danger" onclick="addFav()">❤ Favourite</button>
 </div>
 </div>
 </div>
@@ -156,44 +173,62 @@ input,select{
 </div>
 </section>
 
+<!-- ORDER SUMMARY -->
 <section class="container">
-<h2>Your Orders</h2>
-<p>Total Orders: <span id="orderCount">0</span></p>
-<p>Product Total: ৳<span id="productTotal">0</span></p>
+<h2>Your Order Summary</h2>
+
+<p>Total Products Ordered: <strong><span id="orderCount">0</span></strong></p>
+<p>Products Price: ৳<span id="productTotal">0</span></p>
 <p>Delivery Charge: ৳<span id="deliveryCharge">0</span></p>
-<p>Total Payable: ৳<span id="grandTotal">0</span></p>
-<p>Order Status: <span id="orderStatus">None</span></p>
+<p><strong>Total Payable: ৳<span id="grandTotal">0</span></strong></p>
+
+<p>Order Status: <strong><span id="orderStatus">No Order</span></strong></p>
+
+<button class="btn btn-success" onclick="openModal('addressModal')">Proceed to Checkout</button>
+<button class="btn btn-danger" onclick="cancelOrder()">Cancel Order</button>
 </section>
 
+<!-- REVIEWS -->
 <section class="container">
-<h2>Customer Reviews</h2>
-<div class="review">Very useful product – Rahim</div>
-<div class="review">Fast delivery – Ayesha</div>
+<h2>Reviews & Comments</h2>
+
+<div class="review">
+Good product 👍
+<button onclick="likeReview()">Like</button>
+</div>
+
+<div class="review">
+Fast delivery ❤️
+<button onclick="likeReview()">Like</button>
+</div>
+
+<textarea placeholder="Write a review"></textarea>
+<button class="btn btn-primary">Submit Review</button>
 </section>
 
+<!-- CONTACT -->
 <section class="container">
 <h2>Contact Us</h2>
 <p>Phone / WhatsApp: 01408192518</p>
 <p>Email: forrukhahmed253@gmail.com</p>
 </section>
 
+<!-- FOOTER -->
 <footer>
-<p>
 <a href="#" onclick="openModal('terms')">Terms</a> |
 <a href="#" onclick="openModal('privacy')">Privacy</a>
-</p>
 <p>© 2026 MakeXA</p>
 </footer>
 
-<!-- LOGIN -->
+<!-- LOGIN MODAL -->
 <div class="modal" id="loginModal">
 <div class="modal-content">
 <span class="close-btn" onclick="closeModal('loginModal')">&times;</span>
 <h3>Login</h3>
 <input placeholder="Email">
 <input type="password" placeholder="Password">
-<p style="font-size:13px">
-By continuing you agree to our 
+<p>
+By logging in you agree to our 
 <a href="#" onclick="openModal('terms')">Terms</a> and 
 <a href="#" onclick="openModal('privacy')">Privacy Policy</a>
 </p>
@@ -201,21 +236,21 @@ By continuing you agree to our
 </div>
 </div>
 
-<!-- SIGNUP -->
+<!-- SIGNUP MODAL -->
 <div class="modal" id="signupModal">
 <div class="modal-content">
 <span class="close-btn" onclick="closeModal('signupModal')">&times;</span>
 <h3>Sign Up</h3>
-<input id="name" placeholder="Full Name">
+<input placeholder="Full Name">
 <input placeholder="Email">
-<input placeholder="Phone">
+<input placeholder="Mobile">
 <input type="password" placeholder="Password">
-<p style="font-size:13px">
-By continuing you agree to our 
+<p>
+By signing up you agree to our 
 <a href="#" onclick="openModal('terms')">Terms</a> and 
 <a href="#" onclick="openModal('privacy')">Privacy Policy</a>
 </p>
-<button class="btn btn-success btn-block" onclick="signup()">Sign Up</button>
+<button class="btn btn-success btn-block" onclick="signup()">Create Account</button>
 </div>
 </div>
 
@@ -223,15 +258,17 @@ By continuing you agree to our
 <div class="modal" id="addressModal">
 <div class="modal-content">
 <span class="close-btn" onclick="closeModal('addressModal')">&times;</span>
-<h3>Delivery Information</h3>
+<h3>Delivery Details</h3>
 <input placeholder="Full Name">
 <input placeholder="Mobile Number">
-<input placeholder="Full Address">
+<textarea placeholder="Full Address"></textarea>
+
 <select id="location">
 <option value="">Select Location</option>
-<option value="dhaka">Inside Dhaka</option>
-<option value="outside">Outside Dhaka</option>
+<option value="dhaka">Inside Dhaka (৳60–90)</option>
+<option value="outside">Outside Dhaka (৳250)</option>
 </select>
+
 <button class="btn btn-success btn-block" onclick="confirmOrder()">Confirm Order</button>
 </div>
 </div>
@@ -241,7 +278,7 @@ By continuing you agree to our
 <div class="modal-content">
 <span class="close-btn" onclick="closeModal('terms')">&times;</span>
 <h2>Terms & Conditions</h2>
-<p>Using this site means you agree to our rules.</p>
+<p>Orders once confirmed cannot be refunded for delivery charge.</p>
 </div>
 </div>
 
@@ -250,7 +287,7 @@ By continuing you agree to our
 <div class="modal-content">
 <span class="close-btn" onclick="closeModal('privacy')">&times;</span>
 <h2>Privacy Policy</h2>
-<p>Your data is safe with us.</p>
+<p>Your data is safe and never sold.</p>
 </div>
 </div>
 
@@ -259,53 +296,66 @@ let user=null;
 let orderCount=0;
 let productTotal=0;
 let deliveryCharge=0;
+let orderStatus="";
 
 function openModal(id){document.getElementById(id).style.display='block'}
 function closeModal(id){document.getElementById(id).style.display='none'}
 
-function signup(){user={};closeModal('signupModal');updateUI();alert("Signup successful")}
-function login(){user={};closeModal('loginModal');updateUI();alert("Login successful")}
-function logout(){user=null;updateUI()}
+function signup(){user={};closeModal('signupModal');updateUI();alert("Account created")}
+function login(){user={};closeModal('loginModal');updateUI();alert("Logged in")}
+function logout(){user=null;updateUI();alert("Logged out")}
 
 function updateUI(){
- loginBtn.style.display=user?'none':'inline-block';
- signupBtn.style.display=user?'none':'inline-block';
- logoutBtn.style.display=user?'inline-block':'none';
+loginBtn.style.display=user?'none':'inline-block';
+signupBtn.style.display=user?'none':'inline-block';
+logoutBtn.style.display=user?'inline-block':'none';
 }
 
-function buyNow(price){
- if(!user){alert("Please login or sign up first");return;}
- productTotal+=price;
- orderCount++;
- document.getElementById('orderCount').innerText=orderCount;
- document.getElementById('productTotal').innerText=productTotal;
- openModal('addressModal');
+function addToCart(price){
+if(!user){alert("Please login or sign up first");return;}
+productTotal+=price;
+orderCount++;
+updateOrder();
 }
 
 function confirmOrder(){
- let loc=document.getElementById('location').value;
- deliveryCharge=loc==="dhaka"?80:250;
- document.getElementById('deliveryCharge').innerText=deliveryCharge;
- document.getElementById('grandTotal').innerText=productTotal+deliveryCharge;
- document.getElementById('orderStatus').innerText="Order Confirmed";
- closeModal('addressModal');
+let loc=document.getElementById('location').value;
+if(loc==="dhaka"){deliveryCharge=80;}
+else{deliveryCharge=250;}
+orderStatus="Order Confirmed → Processing → Ready → Delivered";
+updateOrder();
+closeModal('addressModal');
+}
+
+function cancelOrder(){
+orderStatus="Order Cancelled";
+updateOrder();
+}
+
+function updateOrder(){
+document.getElementById('orderCount').innerText=orderCount;
+document.getElementById('productTotal').innerText=productTotal;
+document.getElementById('deliveryCharge').innerText=deliveryCharge;
+document.getElementById('grandTotal').innerText=productTotal+deliveryCharge;
+document.getElementById('orderStatus').innerText=orderStatus||"Pending";
 }
 
 function filterCategory(cat){
- document.querySelectorAll('.product').forEach(p=>{
-  p.style.display=(cat==="all"||p.dataset.category===cat)?'block':'none';
- });
+document.querySelectorAll('.product').forEach(p=>{
+p.style.display=(cat==="all"||p.dataset.category===cat)?'block':'none';
+});
 }
 
 function searchProduct(){
- let k=document.getElementById('searchBox').value.toLowerCase();
- document.querySelectorAll('.product').forEach(p=>{
-  p.style.display=p.dataset.name.toLowerCase().includes(k)?'block':'none';
- });
+let k=document.getElementById('searchBox').value.toLowerCase();
+document.querySelectorAll('.product').forEach(p=>{
+p.style.display=p.dataset.name.toLowerCase().includes(k)?'block':'none';
+});
 }
 
-function addFav(){alert("Added to favourite")}
+function addFav(){alert("Added to favourites")}
+function likeReview(){alert("Liked")}
 </script>
 
 </body>
-    </html>
+</html>
