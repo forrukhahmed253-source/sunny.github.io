@@ -3,246 +3,309 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MakeXA | Kiss Beauty Aloe Vera Clean Soap</title>
+<title>MakeXA - Smart Products & Reselling Platform</title>
+
+<meta name="description" content="MakeXA is a smart everyday product and reselling platform offering quality products, secure login, and trusted service.">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 <style>
 body{
-    font-family:Arial,sans-serif;
+    font-family: Arial, sans-serif;
     margin:0;
-    background:#f9f9f9;
+    background:#f8f9fa;
+    line-height:1.6;
     color:#333;
-    scroll-behavior:smooth;
 }
-a{text-decoration:none;color:#0077cc}
-.container{max-width:1000px;margin:auto;padding:20px}
-h1,h2,h3{color:#0077cc}
-.btn{
-    background:#0077cc;
-    color:#fff;
-    padding:12px 25px;
-    border-radius:5px;
-    display:inline-block;
-    cursor:pointer;
-}
-.btn:hover{background:#005fa3}
-section{padding:40px 0;border-bottom:1px solid #ddd}
-.review{background:#e6f0ff;padding:15px;border-radius:8px;margin-bottom:15px}
-
+a{text-decoration:none}
 header{
     background:#0077cc;
     padding:10px;
     text-align:right;
 }
-header .btn{margin-left:10px}
+header .btn{margin-left:5px}
+
+nav{
+    background:#e9ecef;
+    padding:10px;
+    text-align:center;
+}
+
+nav a{
+    margin:0 5px;
+}
+
+.hero{
+    background:linear-gradient(to right,#0077cc,#28a745);
+    color:white;
+    padding:90px 15px;
+    text-align:center;
+}
+
+section{
+    padding:60px 0;
+    border-bottom:1px solid #ddd;
+}
+
+.review{
+    background:#e6f0ff;
+    padding:15px;
+    border-radius:8px;
+    margin-bottom:15px;
+}
 
 footer{
-    background:#0077cc;
-    color:#fff;
+    background:#343a40;
+    color:white;
+    padding:25px;
     text-align:center;
-    padding:20px;
+}
+
+footer a{
+    color:white;
+    margin:0 10px;
 }
 
 .modal{
     display:none;
     position:fixed;
-    top:0;left:0;
-    width:100%;height:100%;
-    background:rgba(0,0,0,.6);
-    z-index:1000;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    z-index:9999;
+    overflow:auto;
 }
+
 .modal-content{
     background:#fff;
-    margin:50px auto;
+    max-width:600px;
+    margin:60px auto;
     padding:30px;
     border-radius:10px;
-    max-width:500px;
 }
-.close-btn{float:right;font-size:20px;cursor:pointer;color:#0077cc}
-input{
+
+.close-btn{
+    float:right;
+    font-size:22px;
+    cursor:pointer;
+    color:#0077cc;
+}
+
+input,select{
     width:100%;
     padding:10px;
     margin-bottom:15px;
     border:1px solid #ccc;
     border-radius:5px;
 }
-
-@media(max-width:768px){
-    .container{padding:10px}
-}
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header>
-    <a class="btn" id="loginBtn" onclick="openModal('loginModal')">Login</a>
-    <a class="btn" id="signupBtn" onclick="openModal('signupModal')">Sign Up</a>
-    <a class="btn" id="logoutBtn" style="display:none" onclick="logout()">Logout</a>
+    <a class="btn btn-light" id="loginBtn" onclick="openModal('loginModal')">Login</a>
+    <a class="btn btn-light" id="signupBtn" onclick="openModal('signupModal')">Sign Up</a>
+    <a class="btn btn-warning" id="logoutBtn" onclick="logout()" style="display:none">Logout</a>
 </header>
 
-<!-- HERO -->
-<section>
-<div class="container">
-    <h1>Kiss Beauty Aloe Vera Clean Soap</h1>
-    <p style="text-align:center;font-size:18px">
-        Deep Pore Cleansing • Face & Body • 100g
-    </p>
-    <p style="text-align:center">
-        Enriched with Aloe Vera & Natural Oil for healthy, fresh skin.
-    </p>
-    <div style="text-align:center">
-        <a href="#price" class="btn">Buy Now</a>
-    </div>
+<nav>
+    <a href="#" onclick="filterCategory('all')">All</a> |
+    <a href="#" onclick="filterCategory('daily')">Daily Use</a> |
+    <a href="#" onclick="filterCategory('electronics')">Electronics</a> |
+    <a href="#" onclick="filterCategory('accessories')">Accessories</a>
+    <input type="text" id="searchBox" placeholder="Search products" onkeyup="searchProduct()" style="margin-left:10px">
+</nav>
+
+<section class="hero">
+    <h1>MakeXA</h1>
+    <p>Make your daily life easier, faster, and better</p>
+    <p>Smart everyday products and trusted reselling platform</p>
+</section>
+
+<section class="container" id="products">
+<h2 class="text-center mb-4">Products</h2>
+<div class="row">
+
+<div class="col-md-4 product" data-name="Smart Product" data-category="daily">
+<div class="card mb-4">
+<img src="https://via.placeholder.com/300" class="card-img-top">
+<div class="card-body text-center">
+<h5>Smart Everyday Product</h5>
+<p>৳1499</p>
+<button class="btn btn-primary" onclick="buyNow(1499)">Buy Now</button>
+<button class="btn btn-outline-danger btn-sm" onclick="addFav()">❤</button>
+</div>
+</div>
+</div>
+
+<div class="col-md-4 product" data-name="Wireless Headphones" data-category="electronics">
+<div class="card mb-4">
+<img src="https://via.placeholder.com/300" class="card-img-top">
+<div class="card-body text-center">
+<h5>Wireless Headphones</h5>
+<p>৳4999</p>
+<button class="btn btn-primary" onclick="buyNow(4999)">Buy Now</button>
+<button class="btn btn-outline-danger btn-sm" onclick="addFav()">❤</button>
+</div>
+</div>
+</div>
+
 </div>
 </section>
 
-<!-- PRODUCT INFO -->
-<section>
-<div class="container">
-    <h2>Product Description</h2>
-    <p>
-        Kiss Beauty Aloe Vera Clean Soap is designed for daily face and body use.
-        It deeply cleans pores, removes makeup, excess oil, and helps reduce blackheads.
-    </p>
-
-    <h3>Key Benefits</h3>
-    <ul>
-        <li>Deep pore cleansing</li>
-        <li>Removes makeup & dirt</li>
-        <li>Controls excess oil</li>
-        <li>With natural oil & aloe vera</li>
-        <li>Suitable for all skin types</li>
-    </ul>
-</div>
+<section class="container">
+<h2>Your Orders</h2>
+<p>Total Orders: <span id="orderCount">0</span></p>
+<p>Product Total: ৳<span id="productTotal">0</span></p>
+<p>Delivery Charge: ৳<span id="deliveryCharge">0</span></p>
+<p>Total Payable: ৳<span id="grandTotal">0</span></p>
+<p>Order Status: <span id="orderStatus">None</span></p>
 </section>
 
-<!-- HOW TO USE -->
-<section>
-<div class="container">
-    <h2>How to Use</h2>
-    <ol>
-        <li>Wet your face or body</li>
-        <li>Apply soap and massage gently</li>
-        <li>Rinse with clean water</li>
-    </ol>
-</div>
+<section class="container">
+<h2>Customer Reviews</h2>
+<div class="review">Very useful product – Rahim</div>
+<div class="review">Fast delivery – Ayesha</div>
 </section>
 
-<!-- PRICE -->
-<section id="price">
-<div class="container">
-    <h2>Pricing</h2>
-    <p><strong>Retail Price:</strong> ৳47.65 / piece</p>
-    <p><strong>Wholesale:</strong> 288 pieces per carton</p>
-    <p>Cash on Delivery available (Bangladesh)</p>
-    <a class="btn" id="buyBtn">Place Order</a>
-</div>
-</section>
-
-<!-- SPECIFICATIONS -->
-<section>
-<div class="container">
-    <h2>Product Specifications</h2>
-    <ul>
-        <li><strong>Brand:</strong> Kiss Beauty® Skin Clinic</li>
-        <li><strong>Item No:</strong> 1275-07F</li>
-        <li><strong>Net Weight:</strong> 100g</li>
-        <li><strong>Soap Size:</strong> H 87mm × W 55mm</li>
-        <li><strong>Barcode:</strong> 6903072448203</li>
-        <li><strong>Packing:</strong> 24 Dozen × 12 pcs = 288 pcs</li>
-    </ul>
-</div>
-</section>
-
-<!-- REVIEWS -->
-<section>
-<div class="container">
-    <h2>Customer Reviews</h2>
-    <div class="review">
-        “Very good soap, fresh feeling after wash.”  
-        <strong>– Rahim, Dhaka</strong>
-    </div>
-    <div class="review">
-        “Original product, fast delivery.”  
-        <strong>– Ayesha, Delhi</strong>
-    </div>
-</div>
-</section>
-
-<!-- CONTACT -->
-<section>
-<div class="container">
-    <h2>Contact</h2>
-    <p>📞 WhatsApp: 01408192518</p>
-    <p>📧 Email: forrukhahmed253@gmail.com</p>
-</div>
+<section class="container">
+<h2>Contact Us</h2>
+<p>Phone / WhatsApp: 01408192518</p>
+<p>Email: forrukhahmed253@gmail.com</p>
 </section>
 
 <footer>
-    © 2026 MakeXA. All rights reserved.
+<p>
+<a href="#" onclick="openModal('terms')">Terms</a> |
+<a href="#" onclick="openModal('privacy')">Privacy</a>
+</p>
+<p>© 2026 MakeXA</p>
 </footer>
 
 <!-- LOGIN -->
-<div id="loginModal" class="modal">
+<div class="modal" id="loginModal">
 <div class="modal-content">
 <span class="close-btn" onclick="closeModal('loginModal')">&times;</span>
-<h2>Login</h2>
-<input type="email" id="loginEmail" placeholder="Email">
-<input type="password" id="loginPassword" placeholder="Password">
-<button class="btn" onclick="login()">Login</button>
+<h3>Login</h3>
+<input placeholder="Email">
+<input type="password" placeholder="Password">
+<p style="font-size:13px">
+By continuing you agree to our 
+<a href="#" onclick="openModal('terms')">Terms</a> and 
+<a href="#" onclick="openModal('privacy')">Privacy Policy</a>
+</p>
+<button class="btn btn-primary btn-block" onclick="login()">Login</button>
 </div>
 </div>
 
 <!-- SIGNUP -->
-<div id="signupModal" class="modal">
+<div class="modal" id="signupModal">
 <div class="modal-content">
 <span class="close-btn" onclick="closeModal('signupModal')">&times;</span>
-<h2>Sign Up</h2>
-<input type="text" id="name" placeholder="Name">
-<input type="email" id="email" placeholder="Email">
-<input type="text" id="phone" placeholder="Phone">
-<input type="password" id="pass" placeholder="Password">
-<button class="btn" onclick="signup()">Create Account</button>
+<h3>Sign Up</h3>
+<input id="name" placeholder="Full Name">
+<input placeholder="Email">
+<input placeholder="Phone">
+<input type="password" placeholder="Password">
+<p style="font-size:13px">
+By continuing you agree to our 
+<a href="#" onclick="openModal('terms')">Terms</a> and 
+<a href="#" onclick="openModal('privacy')">Privacy Policy</a>
+</p>
+<button class="btn btn-success btn-block" onclick="signup()">Sign Up</button>
+</div>
+</div>
+
+<!-- ADDRESS -->
+<div class="modal" id="addressModal">
+<div class="modal-content">
+<span class="close-btn" onclick="closeModal('addressModal')">&times;</span>
+<h3>Delivery Information</h3>
+<input placeholder="Full Name">
+<input placeholder="Mobile Number">
+<input placeholder="Full Address">
+<select id="location">
+<option value="">Select Location</option>
+<option value="dhaka">Inside Dhaka</option>
+<option value="outside">Outside Dhaka</option>
+</select>
+<button class="btn btn-success btn-block" onclick="confirmOrder()">Confirm Order</button>
+</div>
+</div>
+
+<!-- TERMS -->
+<div class="modal" id="terms">
+<div class="modal-content">
+<span class="close-btn" onclick="closeModal('terms')">&times;</span>
+<h2>Terms & Conditions</h2>
+<p>Using this site means you agree to our rules.</p>
+</div>
+</div>
+
+<!-- PRIVACY -->
+<div class="modal" id="privacy">
+<div class="modal-content">
+<span class="close-btn" onclick="closeModal('privacy')">&times;</span>
+<h2>Privacy Policy</h2>
+<p>Your data is safe with us.</p>
 </div>
 </div>
 
 <script>
 let user=null;
+let orderCount=0;
+let productTotal=0;
+let deliveryCharge=0;
 
-function openModal(id){document.getElementById(id).style.display="block"}
-function closeModal(id){document.getElementById(id).style.display="none"}
+function openModal(id){document.getElementById(id).style.display='block'}
+function closeModal(id){document.getElementById(id).style.display='none'}
 
-function signup(){
-    user={name:document.getElementById("name").value};
-    closeModal("signupModal");
-    updateUI();
-    alert("Account created successfully!");
-}
-
-function login(){
-    user={email:document.getElementById("loginEmail").value};
-    closeModal("loginModal");
-    updateUI();
-    alert("Login successful!");
-}
-
-function logout(){
-    user=null;
-    updateUI();
-}
+function signup(){user={};closeModal('signupModal');updateUI();alert("Signup successful")}
+function login(){user={};closeModal('loginModal');updateUI();alert("Login successful")}
+function logout(){user=null;updateUI()}
 
 function updateUI(){
-    loginBtn.style.display=user?"none":"inline-block";
-    signupBtn.style.display=user?"none":"inline-block";
-    logoutBtn.style.display=user?"inline-block":"none";
+ loginBtn.style.display=user?'none':'inline-block';
+ signupBtn.style.display=user?'none':'inline-block';
+ logoutBtn.style.display=user?'inline-block':'none';
 }
 
-buyBtn.onclick=function(){
-    if(!user) alert("Please login to place order");
-    else alert("Order placed successfully!");
+function buyNow(price){
+ if(!user){alert("Please login or sign up first");return;}
+ productTotal+=price;
+ orderCount++;
+ document.getElementById('orderCount').innerText=orderCount;
+ document.getElementById('productTotal').innerText=productTotal;
+ openModal('addressModal');
 }
+
+function confirmOrder(){
+ let loc=document.getElementById('location').value;
+ deliveryCharge=loc==="dhaka"?80:250;
+ document.getElementById('deliveryCharge').innerText=deliveryCharge;
+ document.getElementById('grandTotal').innerText=productTotal+deliveryCharge;
+ document.getElementById('orderStatus').innerText="Order Confirmed";
+ closeModal('addressModal');
+}
+
+function filterCategory(cat){
+ document.querySelectorAll('.product').forEach(p=>{
+  p.style.display=(cat==="all"||p.dataset.category===cat)?'block':'none';
+ });
+}
+
+function searchProduct(){
+ let k=document.getElementById('searchBox').value.toLowerCase();
+ document.querySelectorAll('.product').forEach(p=>{
+  p.style.display=p.dataset.name.toLowerCase().includes(k)?'block':'none';
+ });
+}
+
+function addFav(){alert("Added to favourite")}
 </script>
 
 </body>
-</html>
+    </html>
