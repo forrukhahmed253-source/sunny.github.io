@@ -5,26 +5,102 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>MakeXA - Smart Products & Reselling Platform</title>
+
 <meta name="description" content="MakeXA is a smart everyday product and reselling platform offering quality products, secure login, and trusted service.">
 
 <link rel="icon" type="image/png" href="logo.png">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 <style>
-body{font-family:Arial,sans-serif;background:#f8f9fa;margin:0}
-header{background:#0077cc;padding:10px 15px;display:flex;justify-content:space-between;align-items:center}
+body{
+font-family:Arial, sans-serif;
+background:#f8f9fa;
+margin:0;
+color:#333;
+}
+
+header{
+background:#0077cc;
+padding:10px 15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
 header img{height:40px}
-nav{background:#e9ecef;padding:10px;text-align:center}
-nav a{margin:0 8px;font-weight:bold}
-.hero{background:linear-gradient(to right,#0077cc,#28a745);color:#fff;text-align:center;padding:80px 15px}
-section{padding:60px 15px;border-bottom:1px solid #ddd}
-.review{background:#e6f0ff;padding:15px;border-radius:8px;margin-bottom:10px}
-footer{background:#343a40;color:#fff;padding:25px;text-align:center}
+
+nav{
+background:#e9ecef;
+padding:10px;
+text-align:center;
+}
+
+nav a{
+margin:0 8px;
+font-weight:bold;
+}
+
+.hero{
+background:linear-gradient(to right,#0077cc,#28a745);
+color:white;
+text-align:center;
+padding:80px 15px;
+}
+
+section{
+padding:60px 15px;
+border-bottom:1px solid #ddd;
+}
+
+.review{
+background:#e6f0ff;
+padding:15px;
+border-radius:8px;
+margin-bottom:10px;
+}
+
+footer{
+background:#343a40;
+color:white;
+padding:25px;
+text-align:center;
+}
+
 footer a{color:white;margin:0 10px}
-.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);z-index:9999}
-.modal-content{background:#fff;max-width:650px;margin:60px auto;padding:30px;border-radius:10px}
-.close-btn{float:right;font-size:22px;cursor:pointer}
-input,textarea,select{width:100%;padding:10px;margin-bottom:12px;border:1px solid #ccc;border-radius:5px}
+
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+z-index:9999;
+overflow:auto;
+}
+
+.modal-content{
+background:#fff;
+max-width:700px;
+margin:40px auto;
+padding:30px;
+border-radius:10px;
+}
+
+.close-btn{
+float:right;
+font-size:22px;
+cursor:pointer;
+}
+
+input,textarea,select{
+width:100%;
+padding:10px;
+margin-bottom:12px;
+border:1px solid #ccc;
+border-radius:5px;
+}
 </style>
 </head>
 
@@ -46,7 +122,7 @@ input,textarea,select{width:100%;padding:10px;margin-bottom:12px;border:1px soli
 <a href="#" onclick="filterCategory('all')">All</a> |
 <a href="#" onclick="filterCategory('daily')">Daily</a> |
 <a href="#" onclick="filterCategory('electronics')">Electronics</a>
-<input id="searchBox" placeholder="Search products" onkeyup="searchProduct()" style="margin-left:15px">
+<input type="text" id="searchBox" placeholder="Search products" onkeyup="searchProduct()" style="margin-left:15px">
 </nav>
 
 <section class="hero">
@@ -60,13 +136,13 @@ input,textarea,select{width:100%;padding:10px;margin-bottom:12px;border:1px soli
 <h2 class="text-center mb-4">Products</h2>
 <div class="row">
 
-<div class="col-md-4 product" data-name="Smart Product" data-category="daily">
+<div class="col-md-4 product" data-name="Smart Everyday Product" data-category="daily">
 <div class="card">
 <img src="products/images/product1.jpg" class="card-img-top">
 <div class="card-body text-center">
 <h5>Smart Everyday Product</h5>
 <p>৳1499</p>
-<button class="btn btn-primary" onclick="addToCart('Smart Everyday Product',1499)">Buy</button>
+<button class="btn btn-primary" onclick="addToCart('Smart Everyday Product',1499)">Buy Now</button>
 <button class="btn btn-outline-danger" onclick="addFav('Smart Everyday Product')">❤ Favourite</button>
 </div>
 </div>
@@ -78,7 +154,7 @@ input,textarea,select{width:100%;padding:10px;margin-bottom:12px;border:1px soli
 <div class="card-body text-center">
 <h5>Wireless Headphones</h5>
 <p>৳4999</p>
-<button class="btn btn-primary" onclick="addToCart('Wireless Headphones',4999)">Buy</button>
+<button class="btn btn-primary" onclick="addToCart('Wireless Headphones',4999)">Buy Now</button>
 <button class="btn btn-outline-danger" onclick="addFav('Wireless Headphones')">❤ Favourite</button>
 </div>
 </div>
@@ -90,14 +166,14 @@ input,textarea,select{width:100%;padding:10px;margin-bottom:12px;border:1px soli
 <section class="container">
 <h2>Your Cart</h2>
 <ul id="cartList"></ul>
-<p><strong>Total: ৳<span id="cartTotal">0</span></strong></p>
+<p>Total Payable: ৳<span id="cartTotal">0</span></p>
 </section>
 
 <section class="container">
-<h2>Reviews</h2>
+<h2>Reviews & Comments</h2>
 
 <div class="review">
-Great product 👍
+Good product 👍
 <button onclick="likeReview()">Like</button>
 </div>
 
@@ -124,16 +200,19 @@ Great product 👍
 <p>© 2026 MakeXA</p>
 </footer>
 
+<!-- LOGIN -->
 <div class="modal" id="loginModal">
 <div class="modal-content">
 <span class="close-btn" onclick="closeModal('loginModal')">&times;</span>
 <h3>Login</h3>
 <input placeholder="Email">
 <input type="password" placeholder="Password">
+<p>By logging in you agree to our Terms and Privacy Policy</p>
 <button class="btn btn-primary btn-block" onclick="login()">Login</button>
 </div>
 </div>
 
+<!-- SIGNUP -->
 <div class="modal" id="signupModal">
 <div class="modal-content">
 <span class="close-btn" onclick="closeModal('signupModal')">&times;</span>
@@ -142,23 +221,143 @@ Great product 👍
 <input placeholder="Email">
 <input placeholder="Mobile">
 <input type="password" placeholder="Password">
+<p>By signing up you agree to our Terms and Privacy Policy</p>
 <button class="btn btn-success btn-block" onclick="signup()">Create Account</button>
 </div>
 </div>
 
+<!-- TERMS FULL -->
 <div class="modal" id="terms">
 <div class="modal-content">
 <span class="close-btn" onclick="closeModal('terms')">&times;</span>
+
 <h2>Terms & Conditions – MakeXA</h2>
-<p>Full terms already merged exactly as you requested.</p>
+
+<p>
+Welcome to MakeXA. By accessing or using this website, creating an account, or placing an order,
+you agree to follow and be bound by the terms and conditions described below.
+Please read them carefully before using our services.
+</p>
+
+<h4>1. General Use</h4>
+<p>
+MakeXA is an online platform that sells smart everyday products and may offer reselling services.
+Users must be at least 18 years old or have guardian permission.
+Illegal activity, abuse, fake orders, or misuse may result in account suspension.
+</p>
+
+<h4>2. Account Responsibility</h4>
+<p>
+Users are responsible for keeping login details secure.
+Providing false information may lead to order cancellation or account removal.
+</p>
+
+<h4>3. Products</h4>
+<p>
+Product descriptions and images are shown as accurately as possible.
+However, slight differences may occur.
+</p>
+
+<h4>4. Pricing & Payment</h4>
+<p>
+All prices are in Bangladeshi Taka.
+Payment method: Cash on Delivery only.
+</p>
+
+<h4>5. Orders</h4>
+<p>
+Orders go through confirmation, processing, delivery, and completion.
+Orders may be cancelled due to stock or delivery issues.
+</p>
+
+<h4>6. Delivery</h4>
+<p>
+Delivery charge is non-refundable.
+Inside Dhaka: ৳60–90
+Outside Dhaka: ৳250
+</p>
+
+<h4>7. Returns</h4>
+<p>
+Returns are accepted within 7 days only for damaged, defective, or incorrect items.
+</p>
+
+<h4>8. Reviews</h4>
+<p>
+Fake or abusive reviews will be removed.
+</p>
+
+<h4>9. Liability</h4>
+<p>
+MakeXA is not responsible for courier delays or third-party service issues.
+</p>
+
+<h4>10. Updates</h4>
+<p>
+Terms may change anytime.
+</p>
+
+<h4>11. Contact</h4>
+<p>
+Phone: 01408192518<br>
+Email: forrukhahmed253@gmail.com
+</p>
+
 </div>
 </div>
 
+<!-- PRIVACY FULL -->
 <div class="modal" id="privacy">
 <div class="modal-content">
 <span class="close-btn" onclick="closeModal('privacy')">&times;</span>
+
 <h2>Privacy Policy – MakeXA</h2>
-<p>Full privacy policy already merged exactly as you requested.</p>
+
+<p>
+At MakeXA, your privacy is extremely important.
+This policy explains how information is collected, used, and protected.
+</p>
+
+<h4>Information Collected</h4>
+<ul>
+<li>Name</li>
+<li>Email</li>
+<li>Phone number</li>
+<li>Address</li>
+<li>Order details</li>
+</ul>
+
+<h4>Usage</h4>
+<p>
+Information is used for order processing, delivery, and customer support.
+</p>
+
+<h4>Security</h4>
+<p>
+Reasonable security measures are used but no system is 100% secure.
+</p>
+
+<h4>Cookies</h4>
+<p>
+Cookies may be used for better experience.
+</p>
+
+<h4>Third Parties</h4>
+<p>
+Information may be shared with delivery and SMS providers only.
+</p>
+
+<h4>User Rights</h4>
+<p>
+Users may request data access or deletion.
+</p>
+
+<h4>Contact</h4>
+<p>
+Phone: 01408192518<br>
+Email: forrukhahmed253@gmail.com
+</p>
+
 </div>
 </div>
 
@@ -231,14 +430,4 @@ favList.innerHTML="";
 (JSON.parse(localStorage.getItem("fav"))||[]).forEach(f=>favList.innerHTML+=`<li>${f}</li>`);
 commentList.innerHTML="";
 (JSON.parse(localStorage.getItem("comments"))||[]).forEach(c=>commentList.innerHTML+=`<li>${c}</li>`);
-likeCount.innerText=localStorage.getItem("likes")||0;
-}
-
-window.onload=function(){
-loadCart();
-loadData();
-};
-</script>
-
-</body>
-</html>
+likeCount.innerText=localStorage.ge
